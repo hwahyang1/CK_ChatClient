@@ -1,10 +1,27 @@
 <template>
-    <div class="media w-50 ml-auto mb-3">
-        <div class="media-body">
-            <div class="bg-primary rounded py-2 px-3 mb-2">
-                <p class="text-small mb-0 text-white Pretendard-Regular">Test which is a new approach to have all solutions</p>
-            </div>
-            <p class="small text-muted Pretendard-Light">12:00 PM | Aug 13</p>
-        </div>
-    </div>
+	<div class="media w-50 mb-3">
+		<img src="/avatar.svg" alt="user" width="50" class="rounded-circle" />
+		<div class="message-area media-body ml-3">
+			<div class="message-area bg-light rounded py-2 px-3 mb-2">
+				<p class="message-area text-small mb-0 text-muted Pretendard-Regular">{{ message }}</p>
+			</div>
+			<p class="message-area small text-muted Pretendard-Light">{{ timestamp }}</p>
+		</div>
+	</div>
 </template>
+
+<script>
+export default {
+	name: 'RecieverMessageElement',
+	data() {
+		return {
+			message: '',
+			timestamp: '',
+		};
+	},
+	mounted() {
+		this.message = this.$attrs.message;
+		this.timestamp = this.$attrs.timestamp;
+	},
+};
+</script>

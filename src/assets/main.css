@@ -40,3 +40,14 @@ input::placeholder {
 	color: #999;
 }
 
+.message-area {
+	width: fit-content;
+	min-width: 0%;
+	max-width: 100%;
+	word-wrap: break-word;
+}
+
+.right {
+	float: right;
+	text-align: right;
+}

@@ -1,0 +1,108 @@
+@font-face {
+	font-family: 'Pretendard_Black';
+	font-weight: 900;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-Black.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-Black.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_ExtraBold';
+	font-weight: 800;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-ExtraBold.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_Bold';
+	font-weight: 700;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-Bold.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_SemiBold';
+	font-weight: 600;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-SemiBold.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_Medium';
+	font-weight: 500;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-Medium.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_Regular';
+	font-weight: 400;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-Regular.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_Light';
+	font-weight: 300;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-Light.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-Light.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_ExtraLight';
+	font-weight: 200;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-ExtraLight.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard_Thin';
+	font-weight: 100;
+	font-display: swap;
+	src:
+		url('/Pretendard/Pretendard-Thin.woff2') format('woff2'),
+		url('/Pretendard/Pretendard-Thin.woff') format('woff');
+}
+
+.Pretendard-Black {
+	font-family: Pretendard_Black, sans-serif, arial !important;
+}
+.Pretendard-ExtraBold {
+	font-family: Pretendard_ExtraBold, sans-serif, arial !important;
+}
+.Pretendard-Bold {
+	font-family: Pretendard_Bold, sans-serif, arial !important;
+}
+.Pretendard-SemiBold {
+	font-family: Pretendard_SemiBold, sans-serif, arial !important;
+}
+.Pretendard-Medium {
+	font-family: Pretendard_Medium, sans-serif, arial !important;
+}
+.Pretendard-Regular {
+	font-family: Pretendard_Regular, sans-serif, arial !important;
+}
+.Pretendard-Light {
+	font-family: Pretendard_Light, sans-serif, arial !important;
+}
+.Pretendard-ExtraLight {
+	font-family: Pretendard_ExtraLight, sans-serif, arial !important;
+}
+.Pretendard-Thin {
+	font-family: Pretendard_Thin, sans-serif, arial !important;
+}

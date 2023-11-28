@@ -1,0 +1,46 @@
+{
+  "name": "ck_chatclient",
+  "version": "1.0.0",
+  "description": "CK2023-2 'Introduction to Game Network' Final Exam",
+  "scripts": {
+    "update-dependencies": "npm i -g npm-check-updates@latest && npx ncu -u && npm i -D --save",
+    "dev": "vite",
+    "build": "run-p type-check build-only",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hwahyang1/CK_ChatClient.git"
+  },
+  "author": "HwaHyang",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/hwahyang1/CK_ChatClient/issues"
+  },
+  "homepage": "https://hwahyang.space",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.0",
+    "vue": "^3.3.9",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.6.0",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^20.10.0",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/tsconfig": "^0.4.0",
+    "eslint": "^8.54.0",
+    "eslint-plugin-vue": "^9.18.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2",
+    "vue-tsc": "^1.8.22"
+  }
+}

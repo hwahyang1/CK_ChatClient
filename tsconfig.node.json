@@ -11,6 +11,6 @@
 		"composite": true,
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"types": ["pinia-plugin-persist", "node"]
+		"types": ["pinia-plugin-persist", "node", "vue-sweetalert2"]
 	}
 }

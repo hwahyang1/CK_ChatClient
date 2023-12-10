@@ -17,7 +17,9 @@ import { RouterView } from 'vue-router';
 				</p>
 			</header>
 			
-			<RouterView />
+			<div class="row rounded-lg overflow-hidden shadow">
+				<RouterView />
+			</div>
 		</div>
 	</main>
 </template>

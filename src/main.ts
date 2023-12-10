@@ -4,6 +4,10 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 
+import UserElement from '@/components/UserElement.vue';
+import SenderMessageElement from '@/components/SenderMessageElement.vue';
+import RecieverMessageElement from '@/components/RecieverMessageElement.vue';
+
 import '@/assets/bootstrap.min.css';
 import '@/assets/main.css';
 
@@ -17,6 +21,10 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 const app = createApp(App);
+
+app.component('UserElement', UserElement);
+app.component('SenderMessageElement', SenderMessageElement);
+app.component('ReceiverMessageElement', RecieverMessageElement);
 
 app.use(createPinia());
 app.use(router);

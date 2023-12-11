@@ -9,18 +9,21 @@ import { RouterView } from 'vue-router';
 				<h1 class="display-4 text-white Pretendard-SemiBold">TCP/IP Socket Chat Client</h1>
 				<p class="text-white lead mb-0 Pretendard-Regular">
 					Server Developed By
-					<a href="https://alice-in-nov.com" class="text-white Pretendard-Medium"><u>Alice in November</u></a>.
+					<a href="https://alice-in-nov.com" class="text-white Pretendard-Medium"
+						><u>Alice in November</u></a
+					>.
 				</p>
 				<p class="text-white lead mb-4 Pretendard-Regular">
 					Client Developed By
-					<a href="https://hwahyang.space" class="text-white Pretendard-Medium"><u>HwaHyang</u></a>.
+					<a href="https://hwahyang.space" class="text-white Pretendard-Medium"
+						><u>HwaHyang</u></a
+					>.
 				</p>
 			</header>
-			
+
 			<div class="row rounded-lg overflow-hidden shadow">
 				<RouterView />
 			</div>
 		</div>
 	</main>
 </template>
-

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue';
-import dayjs from "dayjs";
+/* eslint-disable */
+import dayjs from 'dayjs';
 
 import UserElement from '@/components/UserElement.vue';
 import SenderMessageElement from '@/components/SenderMessageElement.vue';
@@ -34,16 +34,16 @@ import RecieverMessageElement from '@/components/RecieverMessageElement.vue';
 
         <RecieverMessageElement message="message" timestamp="08:30 AM | Aug 25"></RecieverMessageElement>-->
 
-        <component :is="message.component" v-for="message in messages" :message="message.message" :timestamp="message.timestamp" />
-
+		<component :is="message.component" v-for="message in messages" :message="message.message" :timestamp="message.timestamp" />
+		
       </div>
 
       <!-- Typing area -->
-      <form @submit.prevent="onSubmit(message)" ref="messageform" class="bg-light">
+      <form @submit.prevent="handleSubmit(message)" ref="messageform" class="bg-light">
         <div class="input-group">
-          <input type="text" v-model="message" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light Pretendard-Regular">
+          <input type="text" v-model="message" placeholder="Type a message" class="form-control rounded-0 border-0 py-4 bg-light Pretendard-Regular">
           <div class="input-group-append">
-            <button id="button-addon2" class="btn btn-link"> <font-awesome-icon icon="fa-regular fa-paper-plane" /></button>
+            <button id="button-addon2" class="btn btn-link" type="submit"> <font-awesome-icon icon="fa-regular fa-paper-plane" /></button>
           </div>
         </div>
       </form>
@@ -58,10 +58,12 @@ export default {
     return {
       message: '',
       messages: [],
+      messageBoxParentRef: null,
     };
   },
   methods: {
-    onSubmit() {
+    handleSubmit(message: string) {
+		this.message = message;
       if (this.message.replace(/\s+/g, '') === '') return;
 
       this.messages.push({
@@ -72,7 +74,7 @@ export default {
 
       this.message = '';
       this.$nextTick(() => {
-        this.$refs.messageBoxParent.scrollTop = this.$refs.messageBoxParent.scrollHeight;
+		this.$refs.messageBoxParent.scrollTop = this.$refs.messageBoxParent.scrollHeight;
       });
     },
   },

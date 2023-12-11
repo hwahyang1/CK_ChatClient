@@ -3,8 +3,8 @@
 	font-weight: 900;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-Black.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-Black.woff') format('woff');
+		url('./Pretendard/Pretendard-Black.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-Black.woff') format('woff');
 }
 
 @font-face {
@@ -12,8 +12,8 @@
 	font-weight: 800;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-ExtraBold.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-ExtraBold.woff') format('woff');
+		url('./Pretendard/Pretendard-ExtraBold.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-ExtraBold.woff') format('woff');
 }
 
 @font-face {
@@ -21,8 +21,8 @@
 	font-weight: 700;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-Bold.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-Bold.woff') format('woff');
+		url('./Pretendard/Pretendard-Bold.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-Bold.woff') format('woff');
 }
 
 @font-face {
@@ -30,8 +30,8 @@
 	font-weight: 600;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-SemiBold.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-SemiBold.woff') format('woff');
+		url('./Pretendard/Pretendard-SemiBold.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-SemiBold.woff') format('woff');
 }
 
 @font-face {
@@ -39,8 +39,8 @@
 	font-weight: 500;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-Medium.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-Medium.woff') format('woff');
+		url('./Pretendard/Pretendard-Medium.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-Medium.woff') format('woff');
 }
 
 @font-face {
@@ -48,8 +48,8 @@
 	font-weight: 400;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-Regular.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-Regular.woff') format('woff');
+		url('./Pretendard/Pretendard-Regular.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-Regular.woff') format('woff');
 }
 
 @font-face {
@@ -57,8 +57,8 @@
 	font-weight: 300;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-Light.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-Light.woff') format('woff');
+		url('./Pretendard/Pretendard-Light.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-Light.woff') format('woff');
 }
 
 @font-face {
@@ -66,8 +66,8 @@
 	font-weight: 200;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-ExtraLight.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-ExtraLight.woff') format('woff');
+		url('./Pretendard/Pretendard-ExtraLight.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-ExtraLight.woff') format('woff');
 }
 
 @font-face {
@@ -75,8 +75,8 @@
 	font-weight: 100;
 	font-display: swap;
 	src:
-		url('/Pretendard/Pretendard-Thin.woff2') format('woff2'),
-		url('/Pretendard/Pretendard-Thin.woff') format('woff');
+		url('./Pretendard/Pretendard-Thin.woff2') format('woff2'),
+		url('./Pretendard/Pretendard-Thin.woff') format('woff');
 }
 
 .Pretendard-Black {

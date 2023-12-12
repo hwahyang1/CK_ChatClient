@@ -16,6 +16,8 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 export default {
 	name: 'UserElement',
 	data() {

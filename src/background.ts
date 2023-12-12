@@ -1,9 +1,14 @@
 'use strict';
 
-import { app, protocol, BrowserWindow } from 'electron';
+import { app, protocol, BrowserWindow, ipcMain } from 'electron';
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib';
 //import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer';
+import * as net from 'net';
+
 const isDevelopment = process.env.NODE_ENV !== 'production';
+
+let mainWindow: BrowserWindow | null;
+let client: net.Socket | null;
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -12,7 +17,7 @@ protocol.registerSchemesAsPrivileged([
 
 async function createWindow() {
 	// Create the browser window.
-	const win = new BrowserWindow({
+	mainWindow = new BrowserWindow({
 		width: 1300,
 		height: 850,
 		webPreferences: {
@@ -25,13 +30,13 @@ async function createWindow() {
 
 	if (process.env.WEBPACK_DEV_SERVER_URL) {
 		// Load the url of the dev server if in development mode
-		await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string);
-		if (!process.env.IS_TEST) win.webContents.openDevTools();
+		await mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string);
+		if (!process.env.IS_TEST) mainWindow.webContents.openDevTools();
 	} else {
 		createProtocol('app');
 		// Load the index.html when not in development
-		win.loadURL('app://./index.html');
-		win.setMenu(null);
+		mainWindow.loadURL('app://./index.html');
+		mainWindow.setMenu(null);
 	}
 }
 
@@ -62,7 +67,31 @@ app.on('ready', async () => {
       console.error("Vue Devtools failed to install:", e.toString());
     }
   }*/
+	client = new net.Socket();
+
+	client.on('connect', () => {
+		mainWindow?.webContents.send('socket-connected');
+	});
+
+	client.on('data', (data) => {
+		const message = data.toString();
+		console.log('Received message from server:', message);
+
+		// 렌더러 프로세스로 메시지 전송
+		mainWindow?.webContents.send('socket-message', message);
+	});
+
+	// 소켓 서버에 연결
+	client.connect(3000, '127.0.0.1');
+
 	createWindow();
+});
+
+ipcMain.on('send-message', (event, message) => {
+	// 렌더러 프로세스에서 메시지 수신 후 소켓으로 전송
+	if (client && client.writable) {
+		client.write(message);
+	}
 });
 
 // Exit cleanly on request from parent process in development mode.

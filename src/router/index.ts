@@ -6,6 +6,9 @@ import {
 	RouteLocationNormalized,
 	RouteRecordRaw,
 } from 'vue-router';
+
+import { isAuthenticated } from '@/store/authManager';
+
 import HomeView from '../views/HomeView.vue';
 import SignInView from '../views/SignInView.vue';
 
@@ -34,21 +37,19 @@ const router = createRouter({
 	routes,
 });
 
-/* eslint-disable */
 router.beforeEach(
 	(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
-		/*const authenticated = await isAuthenticated();
+		const authenticated = isAuthenticated();
 
 		if (to.meta.authRequired === DefineAuthType.Auth) {
 			if (authenticated) {
 				next();
 			} else {
-				next(`/authentication/signIn?redirect=${to.path}`);
+				next('/setup');
 			}
 		} else {
 			next();
-		}*/
-		next();
+		}
 	}
 );
 

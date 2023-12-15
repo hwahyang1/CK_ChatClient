@@ -20,11 +20,13 @@ export default {
 	name: 'SenderMessageElement',
 	data() {
 		return {
+			userName: '',
 			message: '',
 			timestamp: '',
 		};
 	},
 	mounted() {
+		this.userName = this.$attrs.userName;
 		this.message = this.$attrs.message;
 		this.timestamp = this.$attrs.timestamp;
 	},

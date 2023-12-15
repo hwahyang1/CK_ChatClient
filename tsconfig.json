@@ -14,7 +14,7 @@
 		"useDefineForClassFields": true,
 		"sourceMap": true,
 		"baseUrl": ".",
-		"types": ["pinia-plugin-persist", "node", "webpack-env"],
+		"types": ["pinia-plugin-persist", "node", "webpack-env", "vue-sweetalert2"],
 		"paths": {
 			"@/*": ["src/*"]
 		},

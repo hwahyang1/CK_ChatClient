@@ -29,7 +29,7 @@ const app = createApp(App);
 
 app.component('UserElement', UserElement);
 app.component('SenderMessageElement', SenderMessageElement);
-app.component('ReceiverMessageElement', RecieverMessageElement);
+app.component('RecieverMessageElement', RecieverMessageElement);
 
 app.use(pinia);
 app.use(router);
@@ -40,4 +40,6 @@ app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.use(VueSweetalert2);
 
-app.mount('#app');
+const view = app.mount('#app');
+
+export default view;

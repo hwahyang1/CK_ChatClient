@@ -29,15 +29,12 @@ import RecieverMessageElement from '@/components/RecieverMessageElement.vue';
 	<!-- Chat Box -->
 	<div class="col-7 px-0">
 		<div class="px-4 py-5 chat-box bg-white" ref="messageBoxParent">
-			<!--<SenderMessageElement message="message" timestamp="08:26 AM | Aug 25"></SenderMessageElement>
-
-        <RecieverMessageElement message="message" timestamp="08:30 AM | Aug 25"></RecieverMessageElement>-->
-
 			<component
 				:is="message.component"
 				v-for="message in messages"
 				:message="message.message"
 				:timestamp="message.timestamp"
+				:userName="message.userName"
 			/>
 		</div>
 
@@ -63,11 +60,7 @@ import RecieverMessageElement from '@/components/RecieverMessageElement.vue';
 <script lang="ts">
 import dayjs from 'dayjs';
 import { ipcRenderer } from 'electron';
-
-ipcRenderer.on('socket-message', (event, message) => {
-	// 소켓으로부터 수신된 메시지 처리
-	console.log(message);
-});
+import { useSessionAuthStore } from '@/store/authManager';
 
 export default {
 	name: 'HomeView',
@@ -89,6 +82,7 @@ export default {
 				component: 'SenderMessageElement',
 				message: this.message,
 				timestamp: dayjs().format('hh:mm A | MMM DD'),
+				userName: '',
 			});
 
 			this.message = '';
@@ -96,9 +90,39 @@ export default {
 				this.$refs.messageBoxParent.scrollTop = this.$refs.messageBoxParent.scrollHeight;
 			});
 		},
-    mounted() {
-      console.log("MOUNTED!!!!")
-    }
+		handleReceive(userName: string, message: string) {
+			this.messages.push({
+				component: 'RecieverMessageElement',
+				message,
+				timestamp: dayjs().format('hh:mm A | MMM DD'),
+				userName,
+			});
+
+			this.$nextTick(() => {
+				this.$refs.messageBoxParent.scrollTop = this.$refs.messageBoxParent.scrollHeight;
+			});
+		},
+	},
+	mounted() {
+		const sessionAuthStore = useSessionAuthStore();
+
+		ipcRenderer.on('socket-error', (event, message) => {
+			this.$swal(message);
+			sessionAuthStore.connected = false;
+			this.$router.push({ path: '/setup' });
+		});
+
+		ipcRenderer.on('socket-disconnected', (event, message) => {
+			sessionAuthStore.connected = false;
+			this.$router.push({ path: '/setup' });
+		});
+
+		ipcRenderer.on(
+			'socket-message',
+			(event, message: { command: string; name: string; data: string }) => {
+				this.handleReceive(message.name, message.data);
+			}
+		);
 	},
 };
 </script>

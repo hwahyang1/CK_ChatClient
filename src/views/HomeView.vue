@@ -11,16 +11,35 @@ import RecieverMessageElement from '@/components/RecieverMessageElement.vue';
 	<div class="col-5 px-0">
 		<div class="bg-white">
 			<div class="bg-gray px-4 py-2 bg-light">
-				<p class="h5 mb-0 py-1 Pretendard-SemiBold">Messages</p>
+				<p class="h5 mb-0 py-1 Pretendard-SemiBold">Channel {{ roomNumber }}</p>
 			</div>
 
 			<div class="messages-box">
 				<div class="list-group rounded-0">
-					<UserElement
+					<form
+						@submit.prevent="handleChange(roomNumberAfter)"
+						ref="messageform"
+						class="bg-light"
+					>
+						<div class="input-group">
+							<input
+								type="number"
+								v-model="roomNumberAfter"
+								placeholder="Type room number which you want to move"
+								class="form-control rounded-0 border-0 py-4 bg-light Pretendard-Regular"
+							/>
+							<div class="input-group-append">
+								<button id="button-addon2" class="btn btn-link" type="submit">
+									<font-awesome-icon icon="fa-solid fa-arrow-right-arrow-left" />
+								</button>
+							</div>
+						</div>
+					</form>
+					<!--<UserElement
 						userName="UserName"
 						message="message"
 						timestamp="Aug 25"
-					></UserElement>
+					></UserElement>-->
 				</div>
 			</div>
 		</div>
@@ -66,12 +85,24 @@ export default {
 	name: 'HomeView',
 	data() {
 		return {
+			roomNumber: 0,
+			roomNumberAfter: 0,
 			message: '',
 			messages: [],
 			messageBoxParentRef: null,
 		};
 	},
 	methods: {
+		handleChange(roomTo: number) {
+			ipcRenderer.send('change-channel', `${this.roomNumber}:${this.roomNumberAfter}`);
+
+			const sessionAuthStore = useSessionAuthStore();
+			sessionAuthStore.channel = roomTo;
+			
+			this.roomNumber = roomTo;
+			this.messages = [];
+			this.message = '';
+		},
 		handleSubmit(message: string) {
 			this.message = message;
 			if (this.message.replace(/\s+/g, '') === '') return;
@@ -120,6 +151,7 @@ export default {
 		ipcRenderer.on(
 			'socket-message',
 			(event, message: { command: string; name: string; data: string }) => {
+				this.roomNumber = sessionAuthStore.channel;
 				this.handleReceive(message.name, message.data);
 			}
 		);

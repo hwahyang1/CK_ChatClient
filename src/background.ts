@@ -37,6 +37,9 @@ async function createWindow() {
 }
 
 app.on('window-all-closed', () => {
+	/*if (client && client.writable) {
+		client.write(stringToByteArray('/exit', '', ''));
+	}*/
 	if (process.platform !== 'darwin') {
 		app.quit();
 	}
@@ -84,6 +87,15 @@ ipcMain.on('socket-connect', (event, message) => {
 		client.connect(parseInt(data[1]), data[0]);
 	} catch (err) {
 		mainWindow?.webContents.send('socket-error', err);
+	}
+});
+
+ipcMain.on('change-channel', (event, message) => {
+	const data = message.split(':');
+	if (client && client.writable) {
+		client.write(stringToByteArray('/leave', data[0], ''));
+		client.write(stringToByteArray('/join', data[1], ''));
+		ROOM_NUMBER = data[1];
 	}
 });
 

@@ -66,7 +66,7 @@ export default {
 	data() {
 		return {
 			connecting: false,
-			address: '64.110.74.234',
+			address: 'ip.main.meowlabs.kr',
 			port: 25000,
 			username: '',
 			roomNumber: 0,
@@ -80,6 +80,7 @@ export default {
 			const sessionAuthStore = useSessionAuthStore();
 			sessionAuthStore.connected = false;
 			sessionAuthStore.username = username;
+			sessionAuthStore.channel = roomNumber;
 
 			if (address.replace(/\s+/g, '') === '') return;
 			if (port < 0 || port > 65535) return;
